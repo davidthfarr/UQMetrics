@@ -1,0 +1,25 @@
+Quantitative Prompt:
+
+data['classification_prompt_meta'] = data.apply(
+    lambda row: f"Below is a question you have already answered:\n\
+\
+Statement: {row['sentence']}\nDoes the above political statement lean 'Liberal', 'Neutral', or 'Conservative'? Answer with only one word.\
+\
+\n\
+Your answer was: '{row['pred_label']}'\n\
+On a scale from 1-100, rate your confidence in your answer.\n\
+Constraint: Respond with only a single number and nothing else.", axis=1
+)
+
+Qualitative Prompt:
+data['classification_prompt_meta'] = data.apply(
+    lambda row: f"Below is a question you have already answered:\n\
+\
+Statement: {row['sentence']}\nDoes the above political statement lean 'Liberal', 'Neutral', or 'Conservative'? Answer with only one word.\
+\
+\n\
+Your answer was: '{row['pred_label']}'\n\
+Do you have 'zero', 'low', 'medium', 'high', or 'absolute' confidence in your answer?\n\
+Constraint: Respond with only a single word: 'zero', 'low', 'medium', 'high', or 'absolute' and nothing else.", axis=1
+)
+
